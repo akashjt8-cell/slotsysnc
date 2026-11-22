@@ -1,0 +1,5 @@
+import { AppShell } from '@/components/app-shell';
+import { resources } from '@/lib/demo-data';
+import { Activity, BookOpen, Camera, Plus, Users } from 'lucide-react';
+const icons=[Activity,Users,Camera,BookOpen];
+export default function ResourcesPage(){return <AppShell><div className="dashboard-heading"><div><div className="eyebrow">WORKSPACE / RESOURCES</div><h1>Resources</h1><p>Manage the spaces and equipment your customers can reserve.</p></div><button className="button button-primary"><Plus size={16}/> Add resource</button></div><div className="demo-notice"><strong>Demo catalogue</strong><span>Explore different resource types and availability states.</span></div><div className="resource-cards">{resources.map((r,i)=>{const Icon=icons[i];return <article className="panel resource-card" key={r.name}><div className="resource-card-top"><div className={`resource-icon resource-${i}`}><Icon size={19}/></div><span className={`resource-state ${r.state}`}><i/>{r.availability}</span></div><h2>{r.name}</h2><p>{r.type}</p><div className="resource-card-bottom"><span>{r.rate}</span><small>{r.next}</small></div></article>})}</div></AppShell>}
